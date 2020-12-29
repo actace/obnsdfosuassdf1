@@ -136,7 +136,10 @@ jobs:
         rm -rf packages
         mkdir myvmdk
         mv *.vmdk  ./myvmdk
+        tar -zcvf myvmdk.tar.gz ./myvmdk
+        mv myvmdk.tar.gz ./myvmdk
         cd myvmdk
+        rm *.vmdk
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "::set-output name=status::success"
     - name: Upload firmware directory
